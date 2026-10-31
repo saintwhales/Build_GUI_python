@@ -1,8 +1,9 @@
 from tkinter import *
+from tkinter import ttk
 
 root = Tk()
 root.title("System Login")
-root.geometry("300x180")
+root.geometry("400x180")
 
 Label(root, text="Username").grid(row=0, column=0, padx=10, pady=10)
 Label(root, text="Password").grid(row=1, column=0, padx=10, pady=10)
@@ -25,10 +26,30 @@ def cancel():
     root.destroy()
 
 
-login_btn = Button(root, text="Login", bg="lightgreen", width=10, command=login)
+style = ttk.Style()
+style.theme_use("clam")
+style.configure(
+    "green.TButton",
+    background="lightgreen",
+    foreground="white",
+)
+
+style = ttk.Style()
+style.theme_use("clam")
+style.configure(
+    "salmon.TButton",
+    background="salmon",
+    foreground="white",
+)
+
+login_btn = ttk.Button(
+    root, text="Login", style="green.TButton", width=10, command=login
+)
 login_btn.grid(row=2, column=0, padx=10, pady=20)
 
-cancel_btn = Button(root, text="Cancel", bg="salmon", width=10, command=cancel)
+cancel_btn = ttk.Button(
+    root, text="Cancel", style="salmon.TButton", width=10, command=cancel
+)
 cancel_btn.grid(row=2, column=1, padx=10, pady=20)
 
 root.mainloop()
